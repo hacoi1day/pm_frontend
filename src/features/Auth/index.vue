@@ -14,5 +14,8 @@ export default {
 .auth {
   background-color: lightgrey;
   height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 </style>
