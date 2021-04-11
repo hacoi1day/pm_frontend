@@ -10,8 +10,9 @@ export default {
 }
 </script>
 
-<style>
+<style lang="scss">
 .auth {
-  
+  background-color: lightgrey;
+  height: 100vh;
 }
 </style>
