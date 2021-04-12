@@ -8,9 +8,20 @@ export const login = async (email, password) => {
     return data;
 };
 
-export const me = async () => {
-    const {data} = await axiosInstance.get('me');
+export const resetPassword = async (email) => {
+    const {data} = await axiosInstance.post('reset-password', {
+        email
+    });
     return data;
+}
+
+export const me = async () => {
+    try {
+        const {data} = await axiosInstance.get('me');
+        return data;
+    } catch(err) {
+        return false;
+    }
 };
 
 export const logout = async () => {

@@ -1,0 +1,81 @@
+<template>
+  <div class="left-bar">
+    
+    <div class="menu">
+      <p class="title">Nhân viên</p>
+      <div class="dropdown">
+        <ul>
+          <li>Danh sách</li>
+          <li>Thêm mớI</li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="menu">
+      <p class="title">Phòng ban</p>
+      <div class="dropdown">
+        <ul>
+          <li>Danh sách</li>
+          <li>Thêm mớI</li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="menu">
+      <p class="title">Checkin</p>
+    </div>
+    
+    <div class="menu">
+      <p class="title">Yêu cầu</p>
+      <div class="dropdown">
+        <ul>
+          <li>Danh sách</li>
+          <li>Tạo yêu cầu</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</template>
+
+<script>
+export default {
+
+}
+</script>
+
+<style lang="scss">
+.left-bar {
+  background-color: lightgray;
+  height: calc(100vh - 56px);
+  padding: 10px;
+  overflow-y: auto;
+}
+.menu {
+  background-color: white;
+  padding: 10px;
+  border-radius: 5px;
+  margin-bottom: 10px;
+
+  .title {
+    font-size: 15px;
+    font-weight: bold;
+    margin-left: 5px;
+    margin-bottom: 0px;
+    padding-bottom: 5px;
+    border-bottom: 1px solid #e3e3e3;
+  }
+  .dropdown {
+    ul {
+      list-style-type: none;
+      margin-bottom: 0;
+      li {
+        padding: 5px 10px;
+        cursor: pointer;
+        &:hover {
+          background-color: lightgrey;
+        }
+      }
+    }
+  }
+}
+</style>

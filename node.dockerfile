@@ -1,6 +1,6 @@
 FROM node:14
 
-WORKDIR /src
+WORKDIR /var/www/html
 
 EXPOSE 8080
 

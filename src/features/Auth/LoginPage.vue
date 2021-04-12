@@ -1,7 +1,7 @@
 <template>
   <div class="login">
     <h3 class="title">Đăng nhập</h3>
-    <b-form @submit.prevent="login">
+    <b-form @submit.prevent="onLogin">
       <b-form-group
         id="input-email"
         label="Email:"
@@ -28,8 +28,9 @@
           required
         ></b-form-input>
       </b-form-group>
-      <b-button type="submit" variant="primary">Đăng nhập</b-button>
+      <b-button type="submit" class="float-right" variant="primary">Đăng nhập</b-button>
     </b-form>
+    <router-link to="/auth/reset-password">Quên mật khẩu</router-link>
   </div>
 </template>
 
@@ -47,13 +48,13 @@ export default {
     };
   },
   methods: {
-    async login () {
-      this.$Progress.start()
+    async onLogin () {
+      this.$Progress.start();
       const user = await login(this.user.email, this.user.password);
-      this.$Progress.finish()
+      this.$Progress.finish();
       const { token } = user;
       setToken(token);
-      this.$router.push({name: 'home'})
+      this.$router.push({name: 'home'});
     }
   }
 }
