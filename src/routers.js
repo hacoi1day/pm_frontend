@@ -7,6 +7,9 @@ import HomePage from './features/Dashboard/HomePage';
 import Auth from './features/Auth';
 import LoginPage from './features/Auth/LoginPage';
 import ResetPassword from './features/Auth/ResetPassword';
+
+import UserInfo from './features/User/UserInfo';
+
 import { me } from './apis/auth';
 
 const routes = [
@@ -15,7 +18,7 @@ const routes = [
     name: 'home',
     component: HomePage,
     children: [
-      
+      { path: 'user-info', name: 'user-info', component: UserInfo }
     ]
   },
   { 

@@ -1,5 +1,5 @@
 <template>
-  <b-navbar toggleable="lg" type="dark" variant="info">
+  <b-navbar toggleable="lg" type="light">
     <b-navbar-brand href="#">PM</b-navbar-brand>
     <b-navbar-toggle target="nav-collapse"></b-navbar-toggle>
     <b-collapse id="nav-collapse" is-nav>
@@ -14,7 +14,9 @@
           <template #button-content>
             <em>Root</em>
           </template>
-          <b-dropdown-item href="#">Thông tin</b-dropdown-item>
+          <b-dropdown-item>
+            <router-link to="/user-info">Thông tin</router-link>
+          </b-dropdown-item>
           <b-dropdown-item @click="onLogout">Đăng xuất</b-dropdown-item>
         </b-nav-item-dropdown>
       </b-navbar-nav>

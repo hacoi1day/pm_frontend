@@ -6,8 +6,8 @@
         <div class="col-md-2 no-padding">
           <left-bar></left-bar>
         </div>
-        <div class="col-md-10">
-
+        <div class="col-md-10 content-view">
+          <router-view></router-view>
         </div>
       </div>
     </div>
@@ -31,8 +31,14 @@ export default {
 }
 </script>
 
-<style>
+<style lang="scss">
 .dashboard {
-
+  .content-view {
+    width: 100%;
+    height: calc(100vh - 56px);
+    overflow-y: auto;
+    background-color: #d8d8d8;
+    padding: 20px;
+  }
 }
 </style>

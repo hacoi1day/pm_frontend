@@ -45,7 +45,7 @@ export default {
 
 <style lang="scss">
 .left-bar {
-  background-color: lightgray;
+  background-color: #2d90ca;
   height: calc(100vh - 56px);
   padding: 10px;
   overflow-y: auto;
