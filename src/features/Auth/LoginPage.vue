@@ -48,7 +48,9 @@ export default {
   },
   methods: {
     async login () {
+      this.$Progress.start()
       const user = await login(this.user.email, this.user.password);
+      this.$Progress.finish()
       const { token } = user;
       setToken(token);
       this.$router.push({name: 'home'})

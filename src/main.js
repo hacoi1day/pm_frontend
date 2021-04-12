@@ -1,9 +1,16 @@
 import Vue from 'vue'
 import VueRouter from 'vue-router'
 import { BootstrapVue, IconsPlugin } from 'bootstrap-vue';
+import VueProgressBar from 'vue-progressbar';
 
 Vue.use(BootstrapVue);
 Vue.use(IconsPlugin);
+
+Vue.use(VueProgressBar, {
+  color: '#4285f4',
+  failedColor: 'red',
+  height: '5px'
+});
 
 import App from './App.vue';
 import './App.scss';

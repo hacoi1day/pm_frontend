@@ -1,0 +1,16 @@
+version: '3'
+
+networks: 
+  app-network: null
+
+services: 
+  
+  node:
+    build:
+      context: .
+      dockerfile: node.dockerfile
+    volumes: 
+      - ./:/src
+    command: yarn serve
+    networks: 
+      - app-network

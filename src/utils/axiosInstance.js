@@ -1,7 +1,7 @@
 import axios from 'axios';
 import { getToken } from './token';
 
-const apiUrl = 'http://localhost:8000/api/';
+const apiUrl = 'http://api.pm.local/api/';
 const token = getToken();
 
 const request = axios.create({
