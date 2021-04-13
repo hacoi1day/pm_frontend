@@ -26,16 +26,8 @@ const routes = [
     component: Auth,
     redirect: { name: 'login' },
     children: [
-      {
-        path: 'login',
-        name: 'login',
-        component: LoginPage
-      },
-      {
-        path: 'reset-password',
-        name: 'reset-password',
-        component: ResetPassword
-      }
+      { path: 'login', name: 'login', component: LoginPage },
+      { path: 'reset-password', name: 'reset-password', component: ResetPassword }
     ]
   }
 ];
@@ -46,19 +38,14 @@ const router = new VueRouter({
 });
 
 router.beforeEach(async (to, from, next) => {
+  if (to.next === 'login' || to.name === 'reset-password') {
+    return next();
+  }
   const res = await me();
-  if (to.name === 'login' || to.name === 'reset-password') {
-    if (!res) {
-      next();
-    } else {
-      next({name: 'home'});
-    }
+  if (res) {
+    return next();
   } else {
-    if (res) {
-      next();
-    } else {
-      next({name: 'login'});
-    }
+    return next({name: 'login'});
   }
 });
 

@@ -21,12 +21,18 @@
 </template>
 
 <script>
-import { resetPassword } from '../../apis/auth';
+import { me, resetPassword } from '../../apis/auth';
+import { getToken } from '../../utils/token';
 export default {
   name: 'reset-password',
   data () {
     return {
       email: ''
+    }
+  },
+  created () {
+    if (getToken() !== '' && me()) {
+      this.$router.push({name: 'home'});
     }
   },
   methods: {

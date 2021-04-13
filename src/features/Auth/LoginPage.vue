@@ -35,8 +35,8 @@
 </template>
 
 <script>
-import { login } from '../../apis/auth';
-import { setToken } from '../../utils/token';
+import { login, me } from '../../apis/auth';
+import { getToken, setToken } from '../../utils/token';
 export default {
   name: 'login',
   data () {
@@ -47,6 +47,11 @@ export default {
       }
     };
   },
+  created () {
+    if (getToken() !== '' && me()) {
+      this.$router.push({name: 'home'});
+    }
+  },
   methods: {
     async onLogin () {
       this.$Progress.start();
@@ -55,7 +60,7 @@ export default {
       const { token } = user;
       setToken(token);
       this.$router.push({name: 'home'});
-    }
+    },
   }
 }
 </script>
