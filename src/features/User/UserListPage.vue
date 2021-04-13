@@ -20,7 +20,9 @@
               </b-thead>
               <b-tbody>
                 <b-tr v-for="(item, index) in items" :key="index">
-                  <b-td>{{ item.id }}</b-td>
+                  <b-td>
+                    <router-link :to="`/user/edit/${item.id}`">Sửa</router-link>
+                  </b-td>
                   <b-td>{{ item.name }}</b-td>
                   <b-td>{{ item.email }}</b-td>
                   <b-td>{{ item.phone }}</b-td>

@@ -14,8 +14,9 @@ import UserInfo from './features/Dashboard/UserInfo';
 
 // User
 import User from './features/User';
-import ListUserPage from './features/User/ListUserPage';
-import CreateUserPage from './features/User/CreateUserPage';
+import UserListPage from './features/User/UserListPage';
+import UserCreatePage from './features/User/UserCreatePage';
+import UserEditPage from './features/User/UserEditPage';
 
 // import { me } from './apis/auth';
 
@@ -41,8 +42,9 @@ const routes = [
         component: User,
         redirect: { name: 'user-list' },
         children: [
-          { path: 'list', name: 'user-list', component: ListUserPage },
-          { path: 'create', name: 'user-create', component: CreateUserPage },
+          { path: 'list', name: 'user-list', component: UserListPage },
+          { path: 'create', name: 'user-create', component: UserCreatePage },
+          { path: 'edit/:id', name: 'user-edit', component: UserEditPage },
         ]
       }
     ]

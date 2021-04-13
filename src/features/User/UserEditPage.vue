@@ -1,6 +1,5 @@
 <template>
-  <div>
-    <b-card
+  <b-card
       header="Thêm mới nhân viên"
       header-tag="header"
     >
@@ -128,17 +127,17 @@
         </b-row>
       </b-container>
     </b-card>
-  </div>
 </template>
 
 <script>
-import {createUser} from '../../apis/user';
-import {storeFile} from '../../apis/storage';
+import { storeFile } from '../../apis/storage';
+import { editUser, getUser } from '../../apis/user';
 export default {
-  name: 'user-create',
+  name: 'user-edit',
   data () {
     return {
       user: {
+        id: '',
         name: '',
         email: '',
         phone: '',
@@ -148,18 +147,22 @@ export default {
         address: '',
         password: '123456'
       },
-      isEditPassword: false
+      isEditPassword: false,
+      userId: null,
+    }
+  },
+  created () {
+    this.userId = this.$route.params.id;
+  },
+  watch: {
+    userId () {
+      this.getUser();
     }
   },
   methods: {
-    async handleSubmit () {
-      await createUser(this.user);
-      this.$notify({
-        type: 'success',
-        title: 'Thành công',
-        text: 'Thâm Nhân viên mới thành công !'
-      });
-      this.$router.push({name: 'user-list'});
+    async getUser () {
+      let user = await getUser(this.userId);
+      this.user = user;
     },
     onSelectFile () {
       this.$refs.inputAvatar.click();
@@ -168,28 +171,22 @@ export default {
       const files = event.target.files;
       let {url} = await storeFile(files[0]);
       this.user.avatar = url;
+    },
+    async handleSubmit () {
+      this.$Progress.start();
+      await editUser(this.user);
+      this.$Progress.finish();
+      this.$notify({
+        type: 'success',
+        title: 'Thành công',
+        text: 'Sửa Nhân viên mới thành công !'
+      });
+      this.$router.push({name: 'user-list'});
     }
   }
 }
 </script>
 
-<style lang="scss">
-.upload-avatar {
-  text-align: center;
-  p {
-    margin-bottom: 10px;
-  }
-  .image-preview {
-    max-width: 150px;
-    max-height: 150px;
-  }
-  .input-upload {
-    .input-hidden {
-      display: none;
-    }
-    button {
+<style>
 
-    }
-  }
-}
 </style>
