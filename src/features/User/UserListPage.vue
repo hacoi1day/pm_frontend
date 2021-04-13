@@ -22,6 +22,7 @@
                 <b-tr v-for="(item, index) in items" :key="index">
                   <b-td>
                     <router-link :to="`/user/edit/${item.id}`">Sửa</router-link>
+                    <span @click="deleteUser(item.id)">Xoá</span>
                   </b-td>
                   <b-td>{{ item.name }}</b-td>
                   <b-td>{{ item.email }}</b-td>
@@ -48,7 +49,7 @@
 
 <script>
 import moment from 'moment';
-import { listUser } from '../../apis/user';
+import { listUser, deleteUser } from '../../apis/user';
 export default {
   name: 'user-list',
   data () {
@@ -75,6 +76,17 @@ export default {
       this.items = data;
       this.lastPage = last_page;
       this.total = total;
+    },
+    async deleteUser (userId) {
+      await deleteUser(userId);
+      this.currentPage = 1;
+      await this.getUsers();
+      this.$notify({
+        type: 'success',
+        title: 'Thành công',
+        text: 'Xoá Nhân viên mới thành công !'
+      });
+
     }
   },
   filters: {

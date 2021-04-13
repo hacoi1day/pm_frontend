@@ -19,3 +19,8 @@ export const getUser = async (userId) => {
     const {data} = await axiosInstance.get(`user/user/${userId}`);
     return data;
 };
+
+export const deleteUser = async (userId) => {
+    const {data} = await axiosInstance.delete(`user/user/${userId}`);
+    return data;
+};
