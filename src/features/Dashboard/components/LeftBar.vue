@@ -6,7 +6,7 @@
       <div class="dropdown">
         <ul>
           <li>Danh sách</li>
-          <li>Thêm mớI</li>
+          <li><router-link to="/user/create">Thêm mới</router-link></li>
         </ul>
       </div>
     </div>
