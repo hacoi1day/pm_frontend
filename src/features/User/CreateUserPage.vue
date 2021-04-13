@@ -113,8 +113,15 @@
               <p class="mb-2">Ảnh đại diện</p>
               <img class="image-preview mb-3" src="https://via.placeholder.com/150" alt="https://via.placeholder.com/150">
               <div class="input-upload">
-                <input type="hidden" name="input-avatar" id="input-avatar">
-                <b-button variant="success">Tải lên</b-button>
+                <input 
+                  type="file" 
+                  name="input-avatar" 
+                  class="input-hidden"
+                  ref="inputAvatar"
+                  accept="image/*"
+                  @change="onSelectedFile"
+                >
+                <b-button variant="success" @click="onSelectFile">Tải lên</b-button>
               </div>
             </div>
           </b-col>
@@ -126,6 +133,7 @@
 
 <script>
 import {createUser} from '../../apis/user';
+import {storeFile} from '../../apis/storage';
 export default {
   name: 'user-create',
   data () {
@@ -147,6 +155,14 @@ export default {
     async handleSubmit () {
       const res = await createUser(this.user);
       console.log(res);
+    },
+    onSelectFile () {
+      this.$refs.inputAvatar.click();
+    },
+    async onSelectedFile (event) {
+      const files = event.target.files;
+      let {url} = await storeFile(files[0]);
+      console.log(url);
     }
   }
 }
@@ -163,7 +179,9 @@ export default {
     max-height: 150px;
   }
   .input-upload {
-
+    .input-hidden {
+      display: none;
+    }
     button {
 
     }
