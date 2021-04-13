@@ -2,9 +2,11 @@ import Vue from 'vue';
 import router from './routers';
 import { BootstrapVue, IconsPlugin } from 'bootstrap-vue';
 import VueProgressBar from 'vue-progressbar';
+import Notifications from 'vue-notification'
 
 Vue.use(BootstrapVue);
 Vue.use(IconsPlugin);
+Vue.use(Notifications)
 
 Vue.use(VueProgressBar, {
   color: '#4285f4',

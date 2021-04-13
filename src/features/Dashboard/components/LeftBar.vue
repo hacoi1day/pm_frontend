@@ -5,7 +5,7 @@
       <p class="title">Nhân viên</p>
       <div class="dropdown">
         <ul>
-          <li>Danh sách</li>
+          <li><router-link to="/user/list">Danh sách</router-link></li>
           <li><router-link to="/user/create">Thêm mới</router-link></li>
         </ul>
       </div>

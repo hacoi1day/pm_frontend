@@ -1,12 +1,10 @@
 <template>
-  <div>
-    User Module
-  </div>
+  <router-view></router-view>
 </template>
 
 <script>
 export default {
-
+  name: 'user'
 }
 </script>
 

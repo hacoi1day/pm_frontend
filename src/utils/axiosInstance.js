@@ -1,7 +1,8 @@
 import axios from 'axios';
+import { baseUrl } from '../configs/api';
 import { getToken } from './token';
 
-const apiUrl = 'http://api.pm.local/api/';
+const apiUrl = `${baseUrl}/api/`;
 const token = getToken();
 
 const request = axios.create({
@@ -46,5 +47,10 @@ export default {
   },
   delete(url) {
     return request.delete(url);
+  },
+  uploadFile(file) {
+    let formData = new FormData();
+    formData.append('file', file);
+    return request.post('storage/store-file', formData);
   }
 }

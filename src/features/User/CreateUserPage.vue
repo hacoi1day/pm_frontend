@@ -111,7 +111,7 @@
           <b-col md="6">
             <div class="upload-avatar">
               <p class="mb-2">Ảnh đại diện</p>
-              <img class="image-preview mb-3" src="https://via.placeholder.com/150" alt="https://via.placeholder.com/150">
+              <img class="image-preview mb-3" :src="user.avatar" :alt="user.avatar">
               <div class="input-upload">
                 <input 
                   type="file" 
@@ -143,7 +143,7 @@ export default {
         email: '',
         phone: '',
         birthday: '',
-        avatar: '',
+        avatar: 'https://via.placeholder.com/150',
         gender: '',
         address: '',
         password: '123456'
@@ -153,8 +153,13 @@ export default {
   },
   methods: {
     async handleSubmit () {
-      const res = await createUser(this.user);
-      console.log(res);
+      await createUser(this.user);
+      this.$notify({
+        type: 'success',
+        title: 'Thành công',
+        text: 'Thâm Nhân viên mới thành công !'
+      });
+      this.$router.push({name: 'user-list'});
     },
     onSelectFile () {
       this.$refs.inputAvatar.click();
@@ -162,7 +167,7 @@ export default {
     async onSelectedFile (event) {
       const files = event.target.files;
       let {url} = await storeFile(files[0]);
-      console.log(url);
+      this.user.avatar = url;
     }
   }
 }
