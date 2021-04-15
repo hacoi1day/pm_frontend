@@ -22,7 +22,7 @@
     </div>
 
     <div class="menu">
-      <p class="title"><router-link to="/check-in">Checkin</router-link></p>
+      <p class="title"><router-link to="/check-in">Lịch làm việc</router-link></p>
     </div>
     
     <div class="menu">
