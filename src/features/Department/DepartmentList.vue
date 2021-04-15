@@ -93,14 +93,5 @@ export default {
 </script>
 
 <style lang="scss" scope>
-#table-data {
-  .action {
-    span {
-      cursor: pointer;
-      &:hover {
-        color: #2d90ca;
-      }
-    }
-  }
-}
+
 </style>

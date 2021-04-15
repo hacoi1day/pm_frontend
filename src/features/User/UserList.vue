@@ -20,9 +20,13 @@
               </b-thead>
               <b-tbody>
                 <b-tr v-for="(item, index) in items" :key="index">
-                  <b-td>
-                    <router-link :to="`/user/edit/${item.id}`">Sửa</router-link>
-                    <span @click="deleteUser(item.id)">Xoá</span>
+                  <b-td class="action">
+                    <span class="edit-action mr-2" @click="editUser(item.id)">
+                      <font-awesome-icon icon="pencil-alt"/>
+                    </span>
+                    <span class="delete-action" @click="deleteUser(item.id)">
+                      <font-awesome-icon icon="trash"/>
+                    </span>
                   </b-td>
                   <b-td>{{ item.name }}</b-td>
                   <b-td>{{ item.email }}</b-td>
@@ -77,6 +81,9 @@ export default {
       this.items = data;
       this.lastPage = last_page;
       this.total = total;
+    },
+    editUser (userId) {
+      this.$router.push({name: 'user-edit', params: {id: userId}});
     },
     async deleteUser (userId) {
       await deleteUser(userId);
