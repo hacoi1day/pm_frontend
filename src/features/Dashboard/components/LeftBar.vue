@@ -15,8 +15,8 @@
       <p class="title">Phòng ban</p>
       <div class="dropdown">
         <ul>
-          <li>Danh sách</li>
-          <li>Thêm mớI</li>
+          <li><router-link to="/department/list">Danh sách</router-link></li>
+          <li><router-link to="/department/create">Thêm mới</router-link></li>
         </ul>
       </div>
     </div>

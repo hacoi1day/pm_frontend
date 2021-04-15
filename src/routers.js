@@ -18,6 +18,11 @@ import UserListPage from './features/User/UserListPage';
 import UserCreatePage from './features/User/UserCreatePage';
 import UserEditPage from './features/User/UserEditPage';
 
+// Department
+import Department from './features/Department';
+import DepartmentList from './features/Department/DepartmentList';
+import DepartmentCreate from './features/Department/DepartmentCreate';
+
 // import { me } from './apis/auth';
 
 const routes = [
@@ -45,6 +50,16 @@ const routes = [
           { path: 'list', name: 'user-list', component: UserListPage },
           { path: 'create', name: 'user-create', component: UserCreatePage },
           { path: 'edit/:id', name: 'user-edit', component: UserEditPage },
+        ]
+      },
+      {
+        path: 'department',
+        name: 'department',
+        component: Department,
+        redirect: { name: 'department-list' },
+        children: [
+          { path: 'list', name: 'department-list', component: DepartmentList },
+          { path: 'create', name: 'department-create', component: DepartmentCreate }
         ]
       }
     ]

@@ -1,7 +1,7 @@
 <template>
   <div>
     <b-card
-      header="Danh sách nhân viên"
+      header="Danh sách phòng ban"
       header-tag="header"
     >
       <b-container fluid>
@@ -11,24 +11,18 @@
               <b-thead>
                 <b-tr>
                   <b-th>#</b-th>
-                  <b-th>Tên Nhân viên</b-th>
-                  <b-th>Email</b-th>
-                  <b-th>Số điện thoại</b-th>
-                  <b-th>Ngày sinh</b-th>
-                  <b-th>Phòng ban</b-th>
+                  <b-th>Tên Phòng ban</b-th>
+                  <b-th>Quản lý</b-th>
                 </b-tr>
               </b-thead>
               <b-tbody>
                 <b-tr v-for="(item, index) in items" :key="index">
                   <b-td>
-                    <router-link :to="`/user/edit/${item.id}`">Sửa</router-link>
-                    <span @click="deleteUser(item.id)">Xoá</span>
+                    <router-link :to="`/department/edit/${item.id}`">Sửa</router-link>
+                    <span @click="deleteDepartment(item.id)">Xoá</span>
                   </b-td>
                   <b-td>{{ item.name }}</b-td>
-                  <b-td>{{ item.email }}</b-td>
-                  <b-td>{{ item.phone }}</b-td>
-                  <b-td>{{ item.birthday | filterDate }}</b-td>
-                  <b-td>{{ item.department }}</b-td>
+                  <b-td>{{ item.manager_id }}</b-td>
                 </b-tr>
               </b-tbody>
             </b-table-simple>
@@ -49,10 +43,9 @@
 </template>
 
 <script>
-import moment from 'moment';
-import { listUser, deleteUser } from '../../apis/user';
+import {deleteDepartment, listDepartment} from '../../apis/department';
 export default {
-  name: 'user-list',
+  name: 'department-list',
   data () {
     return {
       currentPage: 1,
@@ -62,39 +55,31 @@ export default {
     };
   },
   created () {
-    this.getUsers();
+    this.getDepartments();
   },
   watch: {
     currentPage (value) {
-      this.getUsers(value);
+      this.getDepartments(value);
     }
   },
   methods: {
-    async getUsers () {
+    async getDepartments () {
       this.$Progress.start();
-      const {data, last_page, total} = await listUser(this.currentPage);
+      const {data, last_page, total} = await listDepartment(this.currentPage);
       this.$Progress.finish();
       this.items = data;
       this.lastPage = last_page;
       this.total = total;
     },
-    async deleteUser (userId) {
-      await deleteUser(userId);
+    async deleteDepartment (departmentId) {
+      await deleteDepartment(departmentId);
       this.currentPage = 1;
-      await this.getUsers();
+      await this.getDepartments();
       this.$notify({
         type: 'success',
         title: 'Thành công',
-        text: 'Xoá Nhân viên mới thành công !'
+        text: 'Xoá Phòng ban mới thành công !'
       });
-    }
-  },
-  filters: {
-    filterDate (date) {
-      if (date) {
-        return moment(date).format('DD/MM/YYYY');
-      }
-      return date;
     }
   }
 }
