@@ -10,9 +10,9 @@ export const listDepartment = async (page) => {
     }
 };
 
-export const createDepartment = async (user) => {
+export const createDepartment = async (department) => {
     try {
-        const {data} = await axiosInstance.post('department/department', user);
+        const {data} = await axiosInstance.post('department/department', department);
         return data;
     } catch (err) {
         console.log(err);
@@ -20,9 +20,9 @@ export const createDepartment = async (user) => {
     }
 };
 
-export const editDepartment = async (user) => {
+export const editDepartment = async (department) => {
     try {
-        const {data} = await axiosInstance.put(`department/department/${user.id}`, user);
+        const {data} = await axiosInstance.put(`department/department/${department.id}`, department);
         return data;
     } catch (err) {
         console.log(err);
@@ -30,9 +30,9 @@ export const editDepartment = async (user) => {
     }
 };
 
-export const getDepartment = async (userId) => {
+export const getDepartment = async (departmentId) => {
     try {
-        const {data} = await axiosInstance.get(`department/department/${userId}`);
+        const {data} = await axiosInstance.get(`department/department/${departmentId}`);
     return data;
     } catch (err) {
         console.log(err);
@@ -40,9 +40,9 @@ export const getDepartment = async (userId) => {
     }
 };
 
-export const deleteDepartment = async (userId) => {
+export const deleteDepartment = async (departmentId) => {
     try {
-        const {data} = await axiosInstance.delete(`department/department/${userId}`);
+        const {data} = await axiosInstance.delete(`department/department/${departmentId}`);
         return data;
     } catch (err) {
         console.log(err);

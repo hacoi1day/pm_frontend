@@ -1,6 +1,6 @@
 <template>
   <b-card
-      header="Thêm mới phòng ban"
+      header="Sửa thôn tin phòng ban"
       header-tag="header"
     >
       <b-container fluid>
@@ -64,11 +64,12 @@
 </template>
 
 <script>
-import { createDepartment } from '../../apis/department';
+import { editDepartment, getDepartment } from '../../apis/department';
 import { dropdownUser } from '../../apis/user';
 export default {
   data () {
     return {
+      departmentId: null,
       department: {
         name: '',
         description: '',
@@ -78,21 +79,32 @@ export default {
     }
   },
   created () {
+    this.departmentId = this.$route.params.id;
     this.userDropdown();
+  },
+  watch: {
+    departmentId () {
+      console.log(this.departmentId);
+      this.getDepartment();
+    }
   },
   methods: {
     async userDropdown () {
       let data = await dropdownUser();
       this.users = data;
     },
+    async getDepartment () {
+      let data = await getDepartment(this.departmentId);
+      this.department = data;
+    },
     async handleSubmit() {
       this.$Progress.start();
-      await createDepartment(this.department);
+      await editDepartment(this.department);
       this.$Progress.finish();
       this.$notify({
         type: 'success',
         title: 'Thành công',
-        text: 'Thêm Phòng ban mới thành công !'
+        text: 'Sửa Phòng ban mới thành công !'
       });
       this.$router.push({name: 'department-list'});
     }

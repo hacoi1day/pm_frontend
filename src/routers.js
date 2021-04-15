@@ -22,6 +22,7 @@ import UserEditPage from './features/User/UserEditPage';
 import Department from './features/Department';
 import DepartmentList from './features/Department/DepartmentList';
 import DepartmentCreate from './features/Department/DepartmentCreate';
+import DepartmentEdit from './features/Department/DepartmentEdit';
 
 // import { me } from './apis/auth';
 
@@ -59,7 +60,8 @@ const routes = [
         redirect: { name: 'department-list' },
         children: [
           { path: 'list', name: 'department-list', component: DepartmentList },
-          { path: 'create', name: 'department-create', component: DepartmentCreate }
+          { path: 'create', name: 'department-create', component: DepartmentCreate },
+          { path: 'edit/:id', name: 'department-edit', component: DepartmentEdit }
         ]
       }
     ]
@@ -83,7 +85,6 @@ const router = new VueRouter({
 //       return next({name: 'login'});
 //     }
 //   }
-  
 // });
 
 export default router;

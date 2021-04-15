@@ -17,9 +17,13 @@
               </b-thead>
               <b-tbody>
                 <b-tr v-for="(item, index) in items" :key="index">
-                  <b-td>
-                    <router-link :to="`/department/edit/${item.id}`">Sửa</router-link>
-                    <span @click="deleteDepartment(item.id)">Xoá</span>
+                  <b-td class="action">
+                    <span class="edit-action mr-2" @click="editDepartment(item.id)">
+                      <font-awesome-icon icon="pencil-alt"/>
+                    </span>
+                    <span class="delete-action" @click="deleteDepartment(item.id)">
+                      <font-awesome-icon icon="trash"/>
+                    </span>
                   </b-td>
                   <b-td>{{ item.name }}</b-td>
                   <b-td>{{ item.manager_id }}</b-td>
@@ -71,6 +75,9 @@ export default {
       this.lastPage = last_page;
       this.total = total;
     },
+    editDepartment (departmentId) {
+      this.$router.push({name: 'department-edit', params: {id: departmentId}});
+    },
     async deleteDepartment (departmentId) {
       await deleteDepartment(departmentId);
       this.currentPage = 1;
@@ -85,6 +92,15 @@ export default {
 }
 </script>
 
-<style>
-
+<style lang="scss" scope>
+#table-data {
+  .action {
+    span {
+      cursor: pointer;
+      &:hover {
+        color: #2d90ca;
+      }
+    }
+  }
+}
 </style>

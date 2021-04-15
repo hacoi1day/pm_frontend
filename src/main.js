@@ -2,7 +2,9 @@ import Vue from 'vue';
 import router from './routers';
 import { BootstrapVue, IconsPlugin } from 'bootstrap-vue';
 import VueProgressBar from 'vue-progressbar';
-import Notifications from 'vue-notification'
+import Notifications from 'vue-notification';
+
+import './configs/fontawesome';
 
 Vue.use(BootstrapVue);
 Vue.use(IconsPlugin);
