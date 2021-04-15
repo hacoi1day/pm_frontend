@@ -24,6 +24,9 @@ import DepartmentList from './features/Department/DepartmentList';
 import DepartmentCreate from './features/Department/DepartmentCreate';
 import DepartmentEdit from './features/Department/DepartmentEdit';
 
+// CheckIn - CheckOut
+import CheckInOut from './features/CheckInOut';
+
 // import { me } from './apis/auth';
 
 const routes = [
@@ -63,7 +66,8 @@ const routes = [
           { path: 'create', name: 'department-create', component: DepartmentCreate },
           { path: 'edit/:id', name: 'department-edit', component: DepartmentEdit }
         ]
-      }
+      },
+      { path: 'check-in', name: 'check-in', component: CheckInOut }
     ]
   },
   
