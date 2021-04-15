@@ -48,6 +48,7 @@
 
 <script>
 import {deleteDepartment, listDepartment} from '../../apis/department';
+import swal from 'sweetalert';
 export default {
   name: 'department-list',
   data () {
@@ -78,14 +79,24 @@ export default {
     editDepartment (departmentId) {
       this.$router.push({name: 'department-edit', params: {id: departmentId}});
     },
-    async deleteDepartment (departmentId) {
-      await deleteDepartment(departmentId);
-      this.currentPage = 1;
-      await this.getDepartments();
-      this.$notify({
-        type: 'success',
-        title: 'Thành công',
-        text: 'Xoá Phòng ban mới thành công !'
+    deleteDepartment (departmentId) {
+      swal({
+        title: "Chắc chắn xoá?",
+        text: "Sau khi xoá, dữ liệu sẽ không thể khôi phục",
+        icon: "warning",
+        buttons: ['Huỷ', 'Đồng ý'],
+        dangerMode: true,
+      }).then(async (willDelete) => {
+        if (willDelete) {
+          await deleteDepartment(departmentId);
+          this.currentPage = 1;
+          await this.getDepartments();
+          this.$notify({
+            type: 'success',
+            title: 'Thành công',
+            text: 'Xoá Phòng ban mới thành công !'
+          });
+        }
       });
     }
   }

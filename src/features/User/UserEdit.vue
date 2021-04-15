@@ -1,6 +1,6 @@
 <template>
   <b-card
-      header="Thêm mới nhân viên"
+      header="Sửa thông tin nhân viên"
       header-tag="header"
     >
       <b-container fluid>
@@ -102,7 +102,7 @@
               </b-row>
               <b-row>
                 <b-col sm="12" class="text-center mt-3">
-                  <b-button type="submit" variant="primary">Thêm mới</b-button>
+                  <b-button type="submit" variant="primary">Sửa</b-button>
                 </b-col>
               </b-row>
             </b-form>
