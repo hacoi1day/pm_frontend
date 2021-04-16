@@ -47,7 +47,6 @@
                     <b-form-select-option :value="null" disabled>Chọn nhân viên phụ trách</b-form-select-option>
                     <b-form-select-option v-for="(user, index) in users" :key="index" :value="user.id">{{ user.name }}</b-form-select-option>
                   </b-form-select>
-
                 </b-col>
               </b-row>
 

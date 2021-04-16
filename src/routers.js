@@ -27,6 +27,11 @@ import DepartmentEdit from './features/Department/DepartmentEdit';
 // CheckIn - CheckOut
 import CheckInOut from './features/CheckInOut';
 
+// Request
+import Request from './features/Request';
+import RequestCreate from './features/Request/RequestCreate';
+import RequestList from './features/Request/RequestList';
+
 // import { me } from './apis/auth';
 
 const routes = [
@@ -67,7 +72,16 @@ const routes = [
           { path: 'edit/:id', name: 'department-edit', component: DepartmentEdit }
         ]
       },
-      { path: 'check-in', name: 'check-in', component: CheckInOut }
+      { path: 'check-in', name: 'check-in', component: CheckInOut },
+      { 
+        path: 'request', 
+        name: 'request', 
+        component: Request,
+        children: [
+          { path: 'create', name: 'request-create', component: RequestCreate },
+          { path: 'list', name: 'request-list', component: RequestList },
+        ]
+      }
     ]
   },
   

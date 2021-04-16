@@ -1,9 +1,10 @@
-FROM node:14
+FROM node:15
 
+# Create app directory
 WORKDIR /var/www/html
-
+COPY src/package*.json ./
 EXPOSE 8080
 
-RUN yarn install
+RUN yarn
 
-CMD [ "yarn", "serve" ]
+CMD ["yarn", "serve"]

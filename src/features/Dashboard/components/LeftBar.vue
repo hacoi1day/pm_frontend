@@ -29,8 +29,8 @@
       <p class="title">Yêu cầu</p>
       <div class="dropdown">
         <ul>
-          <li>Danh sách</li>
-          <li>Tạo yêu cầu</li>
+          <li><router-link to="/request/list">Danh sách</router-link></li>
+          <li><router-link to="/request/create">Tạo yêu cầu</router-link></li>
         </ul>
       </div>
     </div>
