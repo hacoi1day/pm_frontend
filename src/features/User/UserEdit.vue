@@ -35,13 +35,13 @@
               </b-row>
               <b-row class="my-2">
                 <b-col sm="4">
-                  <label for="email">Mật khẩu</label>
+                  <label for="password">Mật khẩu</label>
                 </b-col>
                 <b-col sm="8">
                   <b-input-group>
                     <b-form-input
-                      id="email"
-                      type="email"
+                      id="password"
+                      type="text"
                       placeholder="Nhập mật khẩu"
                       :disabled="!isEditPassword"
                       v-model="user.password"
